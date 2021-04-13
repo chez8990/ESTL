@@ -3,35 +3,43 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>ESTL</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/handle_sample.js"></script>
 </head>
   <div >
-    <nav role="navigation" style="padding-left:50px;">
-      Simple Text Labeler
+    <nav role="navigation" class="orange darken-2" style="padding-left:50px;">
+      Extremely Simple Text Labeler
     </nav>
     <div class="wrapper">
       <div class="row">
-        <div class="col s12 m12">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Sample 1</span>
-              <p>some text here to be labeled</p>
+        <div class="col s12 m12" style="padding-top: 10px;">
+          <button id="new-sample" class="waves-effect waves-light btn" onclick="addSample('Game of Thrones - Jon reveals his Targaryen heritage to Daenerys')">Add new samples</button>
+        </div>
+      </div>
+      <div class="row">
+        <div id="card-holder" class="col s12 m12">
+          <!-- First card example  -->
+          <div class="card grey lighten-1" sampleID=0>
+            <div class="black-text">
+              <div id="text" class="card-content" sampleID=1>
+                How to read data From *.CSV file using javascript? Click on the class names to remove them
+              </div>
             </div>
+
+            <div class="class-container card-content">
+              <button id="sample-1-class-1" class="waves-effect grey lighten-5 btn black-text" onclick="removeClass(this.id)" sampleID=1>Javascript</button>
+              <button id="sample-1-class-2" class="waves-effect grey lighten-5 btn black-text" onclick="removeClass(this.id)" sampleID=1>CSV</button>
+              <button id="sample-1-class-3" class="waves-effect grey lighten-5 btn black-text" onclick="removeClass(this.id)" sampleID=1>Question</button>
+            </div>
+
             <div class="card-action">
-              <input type="text" id="class-search" class="autocomplete" placeholder="type in your class here">
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">three</a></li>
-                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-              </ul>
+              <input type="text" id="class-search" class="autocomplete" placeholder="type in your class here" style="width: 400px;">
+              <button id="new-sample" class="waves-effect orange darken-1 btn" onclick="addClass(1, 1, 'something here')"><i class="material-icons">add_circle_outline</i></button>
             </div>
           </div>
         </div>
@@ -52,8 +60,18 @@
         </div>
         
       </li>       
-      <li><a href="#!">First Sidebar Link</a></li>
-      <li><a href="#!">Second Sidebar Link</a></li>
+      <li>
+        <span class="btn btn-file">
+          <i class="material-icons left">cloud_upload</i>
+          Upload labels csv<input type="file">
+        </span>
+      </li>
+      <li>
+        <span class="btn btn-file">
+          <i class="material-icons left">cloud_upload</i>
+          Upload texts csv<input type="file">
+        </span>
+      </li>
     </div>
   </ul>
 </html>
