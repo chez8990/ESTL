@@ -1,35 +1,60 @@
-var sampleCounter = 1;
+var controller = new SampleControl();
+
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 
 function addSample(content){
+    const randomSampleID = guidGenerator();
     const cardDetails = `
-        <div class="card grey lighten-1" sampleID=${sampleCounter}>
-            <div class="black-text">
-                <div id="sample-1-text" class="card-content">
-                    ${content}
+            <div class="sample card grey lighten-2" id=${randomSampleID}>
+                <div class="black-text">
+                    <div id="sample-1-text" class="card-content">
+                        <pre>
+                        ${content}
+                        </pre>
+                    </div>
+                </div>
+
+                <div id="label-container" class="card-content">
+                </div>
+
+                <div class="card-action">
+                    <input type="text" class="autocomplete" placeholder="type in your class here" style="width: 400px;">
+                    <button class="waves-effect orange darken-1 btn"><i class="material-icons" onclick="addLabel(this)">add_circle_outline</i></button>
                 </div>
             </div>
-
-            <div id="class-containers" class="card-content">
-            </div>
-
-            <div class="card-action">
-                <input type="text" id="class-search" class="autocomplete" placeholder="type in your class here" style="width: 400px;">
-                <button class="waves-effect orange darken-1 btn"><i class="material-icons" sampleID=${sampleCounter}>add_circle_outline</i></button>
-            </div>
-        </div>
-    `
-    document.getElementById("card-holder").insertAdjacentHTML("beforeend", cardDetails);
-    sampleCounter += 1;
+        `
+    $("#card-holder").append(cardDetails);
+    controller.addSample(randomSampleID, content)
 }
 
 
-function addClass(sampleID, classCount, className){
+function addLabel(e){
+    const sampleContainer = e.parentNode.parentNode.parentNode
+    const sampleID = sampleContainer.id
+    const label = sampleContainer.getElementsByClassName("autocomplete")[0].value
+    const randomLabelID = guidGenerator();
+
     const classDetails = `
-        <button id="sample-${sampleID}-class-${classCount}" class="waves-effect grey lighten-5 btn black-text" onclick="removeClass(this.id)">${className}</button>
+        <button id=${randomLabelID} class="waves-effect grey lighten-5 btn black-text" onclick="removeLabel(this)">${label}</button>
     `
-    document.getElementById(`sample-${sampleID}`).getElementsByClassName("class-container card-content")[0].insertAdjacentHTML("beforeend", classDetails);
+    sampleContainer.querySelector("#label-container").insertAdjacentHTML("beforeend", classDetails);
+
+    controller.addLabel(sampleID, randomLabelID, label)
 }
 
-function removeClass(id){
-    document.getElementById(id).remove();
+function removeLabel(e){
+    const sampleContainer = e.parentNode.parentNode
+    const sampleID = sampleContainer.id
+    const labelID = e.id
+
+    console.log(sampleContainer, sampleID, labelID)
+
+    controller.removeLabel(sampleID, labelID)
+    document.getElementById(labelID).remove();
 }
