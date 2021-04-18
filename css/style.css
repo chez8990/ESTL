@@ -19,6 +19,12 @@
   margin: auto;
   width: 80%;
 }
+.card{
+  border-radius: 10px;
+}
+.card-action{
+  border-radius: 10px;
+}
 .btn-file {
   position: relative;
   overflow: hidden;
