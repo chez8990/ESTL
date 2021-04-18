@@ -1,4 +1,4 @@
-function startCSVParsing(){
+function startSamplesParsing(){
     $('#upload-samples').parse({
         config: {
             delimiter: "",
@@ -21,7 +21,6 @@ function startCSVParsing(){
     return false
 }
 
-
 function addCSVToSamples(results){
     var data = results.data;
     for (i=0;i<data.length;i++){
@@ -36,3 +35,22 @@ function addCSVToSamples(results){
     return false
 }
 	
+function downloadSamplesJSON(){
+    if (controller.sampleCount > 0){
+        var sampleJSON = JSON.stringify(controller.samples)
+        var blob = new Blob([sampleJSON], { type: "text/plain;charset=utf-8" });
+        var isIE = false || !!document.documentMode;
+        if (isIE) {
+            window.navigator.msSaveBlob(blob, "Customers.txt");
+        } else {
+            var url = window.URL || window.webkitURL;
+            link = url.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.download = "Customers.txt";
+            a.href = link;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    } 
+}
