@@ -15,7 +15,7 @@ function addSample(content){
                 <div class="black-text">
                     <div id="sample-1-text" class="card-content">
                         <pre>
-                        ${content}
+                            ${content}
                         </pre>
                     </div>
                 </div>
@@ -30,6 +30,9 @@ function addSample(content){
             </div>
         `
     $("#card-holder").append(cardDetails);
+    $('input.autocomplete').autocomplete({
+		source: controller.classNames
+    });
     controller.addSample(randomSampleID, content)
 }
 
