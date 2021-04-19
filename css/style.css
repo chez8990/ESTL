@@ -7,40 +7,40 @@
  */
 
 .icon-block {
-  padding: 0 15px;
+    padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
 }
 .wrapper {
-  padding-left: 300px;
+    padding-left: 300px;
 }
 .center {
-  margin: auto;
-  width: 80%;
+    margin: auto;
+    width: 80%;
 }
 .card{
-  border-radius: 10px;
+    border-radius: 10px;
 }
 .card-action{
-  border-radius: 10px;
+    border-radius: 10px;
 }
 .btn-file {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }.btn-file input[type=file] {
-  position: absolute;
-  width:74px;
-  top: 0;
-  right: 0;
-  min-width: 75px;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
+    position: absolute;
+    width:74px;
+    top: 0;
+    right: 0;
+    min-width: 75px;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
