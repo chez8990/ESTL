@@ -22,7 +22,7 @@ class SampleControl {
     constructor(){
         this.sampleCount = 0
         this.samples = {}
-        this.classLabels = []
+        this.classNames = []
     }
     
     addOne(){
@@ -49,6 +49,10 @@ class SampleControl {
 
     removeSample(sampleID){
         delete this.samples[sampleID]
+    }
+
+    addClassName(name){
+        this.classNames.push(name);
     }
 }
 
