@@ -44,3 +44,6 @@
     cursor: inherit;
     display: block;
 }
+.btn{
+    border-radius: 5px;
+}
