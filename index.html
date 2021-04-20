@@ -3,25 +3,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-        <title>ESTL</title>
+        <title>ExtremelySimpleTextLabeler</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <link href="css/autcomplete.css" type="text/css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
-        <script src="js/cache.js"></script>
-        <script src="js/handle_sample.js"></script>
-        <script src="js/upload_sample.js"></script>
+        <script src="js/sample_control.js"></script>
+        <script src="js/sample_io.js"></script>
     </head>
     <body>
         <div>
-            <nav role="navigation" class="orange darken-2" style="padding-left:50px;">
-                Extremely Simple Text Labeler
-            </nav>
+            <div class="navbar-fixed">
+                <nav role="navigation" class="orange darken-2" style="padding-left:50px;">
+                    Extremely Simple Text Labeler
+                </nav>
+            </div>
             <div class="wrapper">
                 <div class="row">
                     <div class="col s12 m12" style="padding-top: 10px;">
-                        <button id="new-sample" class="waves-effect waves-light btn" onclick="addSample('something here')">Add new samples</button>
+                        <button id="new-sample" class="waves-effect waves-light btn orange darken" onclick="addSample('something here')">Add new samples</button>
                     </div>
                 </div>
                 <div class="row">
@@ -32,20 +36,46 @@
             </div>
         </div>
 
-        <ul id="slide-out" class="sidenav sidenav-fixed" style="margin-top:70px;">
+        <ul id="slide-out" class="sidenav sidenav-fixed" style="margin-top:66px;">
             <div class="container center">
+                <li>
+                    <div class="switch" id="show-labelled">
+                        Show labelled
+                        <label>
+                            Off
+                            <input type="checkbox" onchange=>
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </li>
                 <li style="padding-top: 100px;">
                 </li>     
                 <li>
                     <form class="form-inline">
                         <div class="form-group">
-                            <label for="upload-samples">Upload a CSV formatted file:</label>
+                            <label for="upload-samples">Upload a CSV for the samples:</label>
                             <input type="file" id="upload-samples"  class="form-control" accept=".csv" required />
                         </div>
                         <div class="form-group">
-                            <button type="button" id="submit-samples" class="btn btn-primary" onclick=startCSVParsing()>Upload File</button>
+                            <button type="button" id="submit-samples" class="btn btn-primary orange darken-2" onclick=startSamplesParsing()>Upload Samples</button>
                         </div>
                     </form>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="upload-class">Upload a CSV for the class names:</label>
+                            <input type="file" id="upload-class"  class="form-control" accept=".csv" required />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="submit-class" class="btn btn-primary orange darken-2" onclick=startClassParsing()>Upload Class</button>
+                        </div>
+                    </form>
+                </li>
+                <li>
+                    <div style="border-bottom: 1px solid gray; margin-top: 10px; margin-bottom: 10px;"></div>
+                </li>
+                <li>
+                    <button type="button" id="download-samples" class="btn btn-primary btn-round orange darken-2" onclick=downloadSamplesJSON()>Download</button>
                 </li>
             </div>
         </ul>
