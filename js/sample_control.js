@@ -1,3 +1,41 @@
+class SampleControl{
+    constructor(){
+        this.sampleCount = 0
+        this.samples = {}
+        this.classNames = []
+    }
+    
+    addOne(){
+        this.count += 1
+    }
+    
+    addSample(sampleID, content){
+        var template = {
+            "content": content,
+            "labels": {}
+        }
+        
+        this.samples[sampleID] = template
+        this.sampleCount += 1;
+    }
+
+    addLabel(sampleID, labelID, label){
+        this.samples[sampleID]['labels'][labelID] = label
+    }
+
+    removeLabel(sampleID, labelID){
+        delete this.samples[sampleID]['labels'][labelID]
+    }
+
+    removeSample(sampleID){
+        delete this.samples[sampleID]
+    }
+
+    addClassName(name){
+        this.classNames.push(name);
+    }
+}
+
 var controller = new SampleControl();
 
 function guidGenerator() {
@@ -7,16 +45,13 @@ function guidGenerator() {
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
-
 function addSample(content){
     const randomSampleID = guidGenerator();
     const cardDetails = `
             <div class="sample card grey lighten-2" id=${randomSampleID}>
                 <div class="black-text">
                     <div id="sample-1-text" class="card-content">
-                        <pre>
-                            ${content}
-                        </pre>
+                        ${content}
                     </div>
                 </div>
 
