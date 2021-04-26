@@ -50,15 +50,14 @@ function addSample(content){
     const cardDetails = `
             <div class="sample card grey lighten-2" id=${randomSampleID}>
                 <div class="black-text">
-                    <div id="sample-1-text" class="card-content">
+                    <div class="card-content card-color">
                         ${content}
                     </div>
                 </div>
 
-                <div id="label-container" class="card-content">
+                <div id="label-container" class="card-content card-color">
                 </div>
-
-                <div class="card-action">
+                <div class="card-content card-color">
                     <input type="text" class="autocomplete" placeholder="type in your class here" style="width: 400px;">
                     <button class="waves-effect orange darken-1 btn"><i class="material-icons" onclick="addLabel(this)">add_circle_outline</i></button>
                 </div>

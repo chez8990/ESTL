@@ -5,25 +5,14 @@
  *
  * Made By MaterializeCSS.com
  */
-
+body {
+    background-color: #e2e5ee;
+}
 .icon-block {
     padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
-}
-.wrapper {
-    padding-left: 300px;
-}
-.center {
-    margin: auto;
-    width: 80%;
-}
-.card{
-    border-radius: 10px;
-}
-.card-action{
-    border-radius: 10px;
 }
 .btn-file {
     position: relative;
@@ -46,4 +35,29 @@
 }
 .btn{
     border-radius: 5px;
+    background-color: #dde0e9;
+    color: gray
+}
+.center {
+    margin: auto;
+    width: 80%;
+}
+.card{
+    border-radius: 10px;
+}
+.card-action{
+    border-radius: 10px;
+}
+.card-color{
+    background-color: #f3f3f5;
+}
+.sidenav{
+    width: 300px;
+}
+.wrapper {
+    padding-left: 300px;
+}
+.text-container {
+    padding-left: 400px;
+    padding-top: 30px
 }

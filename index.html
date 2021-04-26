@@ -14,18 +14,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
         <script src="js/sample_control.js"></script>
         <script src="js/sample_io.js"></script>
+        <script src="js/interface_control.js"></script>
     </head>
     <body>
         <div>
             <div class="navbar-fixed">
-                <nav role="navigation" class="orange darken-2" style="padding-left:50px;">
+                <nav role="navigation" style="padding-left:50px; background-color: #37394e;">
                     Extremely Simple Text Labeler
                 </nav>
             </div>
-            <div class="wrapper">
+            <div class="text-container wrapper">
                 <div class="row">
                     <div class="col s12 m12" style="padding-top: 10px;">
-                        <button id="new-sample" class="waves-effect waves-light btn orange darken" onclick="addSample('something here')">Add new samples</button>
+                        <button id="new-sample" class="waves-effect waves-light btn" onclick="addSample('something here')">Add new samples</button>
                     </div>
                 </div>
                 <div class="row">
@@ -36,19 +37,19 @@
             </div>
         </div>
 
-        <ul id="slide-out" class="sidenav sidenav-fixed" style="margin-top:66px;">
+        <ul id="slide-out" class="sidenav sidenav-fixed" style="margin-top:64px; background-color: #4f5169;">
             <div class="container center">
-                <li>
+                <!-- <li>
                     <div class="switch" id="show-labelled">
                         Show labelled
                         <label>
                             Off
-                            <input type="checkbox" onchange=>
+                            <input type="checkbox" onchange=hideLabelled(this)>
                             <span class="lever"></span>
                             On
                         </label>
                     </div>
-                </li>
+                </li> -->
                 <li style="padding-top: 100px;">
                 </li>     
                 <li>
@@ -58,7 +59,7 @@
                             <input type="file" id="upload-samples"  class="form-control" accept=".csv" required />
                         </div>
                         <div class="form-group">
-                            <button type="button" id="submit-samples" class="btn btn-primary orange darken-2" onclick=startSamplesParsing()>Upload Samples</button>
+                            <button type="button" id="submit-samples" class="btn btn-primary" onclick=startSamplesParsing()>Upload Samples</button>
                         </div>
                     </form>
                     <form class="form-inline">
@@ -67,7 +68,7 @@
                             <input type="file" id="upload-class"  class="form-control" accept=".csv" required />
                         </div>
                         <div class="form-group">
-                            <button type="button" id="submit-class" class="btn btn-primary orange darken-2" onclick=startClassParsing()>Upload Class</button>
+                            <button type="button" id="submit-class" class="btn btn-primary" onclick=startClassParsing()>Upload Class</button>
                         </div>
                     </form>
                 </li>
@@ -75,7 +76,7 @@
                     <div style="border-bottom: 1px solid gray; margin-top: 10px; margin-bottom: 10px;"></div>
                 </li>
                 <li>
-                    <button type="button" id="download-samples" class="btn btn-primary btn-round orange darken-2" onclick=downloadSamplesJSON()>Download</button>
+                    <button type="button" id="download-samples" class="btn btn-primary" onclick=downloadSamplesJSON()>Download</button>
                 </li>
             </div>
         </ul>
